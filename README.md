@@ -7,3 +7,15 @@ Trade-off: Datasets are not directly connected to their consumer DAGs and thus t
 Limitations: Works for the newest created one-to-one dataset.
 
 Tested with Airflow 2.6.3
+
+### Example Usage
+
+* Poll for a dataset that is being created for the same execution_date as the DagRun that is executing the sensor
+
+```python
+    dataset_sensor_task = DatasetSensor(
+        task_id="dataset_sensor",
+        dataset_uri="dataset",
+        execution_date="{{data_interval_start}}",
+    )
+```

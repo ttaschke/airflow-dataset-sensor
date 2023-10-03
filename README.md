@@ -5,7 +5,7 @@ This is a workaround for the limitation that currently data-aware scheduling and
 
 Trade-off: Datasets are not directly connected to their consumer DAGs and thus their relationship is not displayed in the Datasets UI.
 
-Limitations: Works for the newest created one-to-one dataset.
+Limitations: Works for the newest created one-to-one dataset to task relation.
 
 
 Tested with Airflow 2.6.3

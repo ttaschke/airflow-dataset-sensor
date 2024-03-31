@@ -1,7 +1,8 @@
+from datetime import timedelta
+
 import airflow
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
-
 from plugins.sensors.dataset_sensor import DatasetSensor
 
 with DAG(
@@ -14,7 +15,9 @@ with DAG(
         task_id="dataset_sensor_hourly",
         dataset_uri="hourly_dataset",
         execution_date="{{data_interval_start}}",
-        poke_interval=60,
+        poll_interval=30,
+        execution_timeout=timedelta(seconds=600),
+        deferrable=True,
     )
 
     # Task that will execute once the dataset was created

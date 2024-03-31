@@ -19,5 +19,6 @@ Tested with Airflow 2.6.3
         task_id="dataset_sensor",
         dataset_uri="dataset",
         execution_date="{{data_interval_start}}",
+        deferrable=True
     )
 ```
